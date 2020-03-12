@@ -28,7 +28,6 @@ export default class NavBar extends Component {
             onClick={this.handleItemClick}
           >About
           </Menu.Item>
-          
         </Link>
       </Menu>
     );
