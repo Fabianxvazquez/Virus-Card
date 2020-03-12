@@ -4,9 +4,11 @@ import {Route, Switch } from 'react-router-dom'
 import Home from './Home'
 import About from './About'
 import NoMatch from './NoMatch';
-import {Container} from 'semantic-ui-react'
+import {Container, Header} from 'semantic-ui-react'
 import Navbar from './Navbar'
 import Virus from './Virus'
+import VirusForm from './VirusForm'
+import VirusCards from './VirusCards'
 
 export default class App extends Component {
   state = {
@@ -107,18 +109,40 @@ export default class App extends Component {
     });
   };
   render () {
+  const { showForm } = this.state;
   return (
     <>
-    <Container>
-    <Navbar/>
-    <Switch>
-      <Route exact path='/' component={Home} />
-      <Route exact path='/About' component={About} />
-      <Route exact path="/Virus" component={Virus} />
-      <Route component={NoMatch} />
-    </Switch>
-    </Container>
-    
+      <Container>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Virus" component={Virus} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Container>
+      <Container>
+        <Header as="h1">Flash Cards</Header>
+
+        {/* a way to add more flash cards */}
+        <div onClick={this.toggleForm}>
+          {showForm ? "hide" : "new Flashcard"}
+        </div>
+        {showForm ? <VirusForm addCard={this.addVirus} /> : null}
+        {/* bunch of flash cards */}
+        <VirusCards
+          viruses={this.state.viruses}
+          delete={this.deleteVirus}
+          // edit={this.editCard}
+          toggleEdit={this.toggleEdit}
+          toggleAnswer={this.toggleAnswer}
+        />
+
+        {/* a way to edit flash cards  */}
+        {/* a way to show front and back of flash cards */}
+        {/* a way to guess answers */}
+        {/* a way to show success and fails of your guesses */}
+      </Container>
     </>
   );
   }
