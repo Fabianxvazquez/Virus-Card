@@ -137,11 +137,6 @@ export default class App extends Component {
           toggleEdit={this.toggleEdit}
           toggleAnswer={this.toggleAnswer}
         />
-
-        {/* a way to edit flash cards  */}
-        {/* a way to show front and back of flash cards */}
-        {/* a way to guess answers */}
-        {/* a way to show success and fails of your guesses */}
       </Container>
     </>
   );
