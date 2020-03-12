@@ -6,8 +6,6 @@ import About from './About'
 import NoMatch from './NoMatch';
 import {Container} from 'semantic-ui-react'
 import Navbar from './Navbar'
-<<<<<<< HEAD
-=======
 import Virus from './Virus'
 
 export default class App extends Component {
@@ -75,7 +73,6 @@ export default class App extends Component {
         const newCard = { ...virus };
         newCard.edit = !virus.Edit;
         this.toggleForm()
->>>>>>> b5c2920e6b25877d99727f813bd3c85bc6a62e09
 
         
       } else {
