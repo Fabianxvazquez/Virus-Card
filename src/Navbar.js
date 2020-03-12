@@ -11,22 +11,33 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
     return (
       <Menu inverted>
-        <Link to='/'>
+        <Link to="/">
           <Menu.Item
-            as='div'
-            name='home'
-            active={activeItem === 'Home'}
+            as="div"
+            name="Home"
+            active={activeItem === "Home"}
             onClick={this.handleItemClick}
-          >Home
+          >
+            Home
           </Menu.Item>
         </Link>
-        <Link to='/about'>
+        <Link to="/about">
           <Menu.Item
-            as='div'
-            name='About'
-            active={activeItem === 'About'}
+            as="div"
+            name="About"
+            active={activeItem === "About"}
             onClick={this.handleItemClick}
           >About
+          </Menu.Item>
+        </Link>
+        <Link to="/virus">
+          <Menu.Item
+            as="div"
+            name="Viruses"
+            active={activeItem === "Viruses"}
+            onClick={this.handleItemClick}
+          >
+            Viruses
           </Menu.Item>
         </Link>
       </Menu>
