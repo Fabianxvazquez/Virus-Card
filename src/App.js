@@ -5,7 +5,7 @@ import Home from './Home'
 import About from './About'
 import NoMatch from './NoMatch';
 import {Container} from 'semantic-ui-react'
-import Navbar from './NavBar'
+import Navbar from './Navbar'
 
 function App() {
   return (
