@@ -6,6 +6,7 @@ import About from './About'
 import NoMatch from './NoMatch';
 import {Container} from 'semantic-ui-react'
 import Navbar from './NavBar'
+import Virus from './Virus'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
     <Switch>
       <Route exact path='/' component={Home} />
       <Route exact path='/About' component={About} />
+      <Route exact path="/Virus" component={Virus} />
       <Route component={NoMatch} />
     </Switch>
     </Container>
