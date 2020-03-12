@@ -114,7 +114,7 @@ export default class App extends Component {
     <Switch>
       <Route exact path='/' component={Home} />
       <Route exact path='/About' component={About} />
-      <Route exact path='/Virus' component={Virus} />
+      <Route exact path="/Virus" component={Virus} />
       <Route component={NoMatch} />
     </Switch>
     </Container>
