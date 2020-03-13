@@ -21,7 +21,7 @@ const FlashCard = ({
         <Card.Meta>Number of Times Incorrect:{wrong}</Card.Meta> */}
       </Card.Content>
       <Card.Content extra>
-        <Button color="purple" onClick={() => toggleAnswer(id)}>
+        <Button color="blue" onClick={() => toggleAnswer(id)}>
           {showBack ? "Show Less" : "Show More"}
         </Button>
         {/* {console.log(toggleAnswer)} */}
@@ -33,7 +33,7 @@ const FlashCard = ({
       </Card.Content> */}
       <Card.Content extra>
         <Button color="red" onClick={() => deleteVirus(id)}>
-          delete
+          Delete Virus
         </Button>
         {/* <Button color="blue" onClick={() => toggleEdit(id)}>
           edit

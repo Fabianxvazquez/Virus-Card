@@ -109,14 +109,14 @@ export default class Virus extends React.Component {
   const { showForm } = this.state;
   return (
     <>
-      <div>Virus</div>
+      
       <Container>
         <Header as="h1">Viruses</Header>
 
         {/* a way to add more flash cards */}
-        <div onClick={this.toggleForm}>
-          {showForm ? "hide" : "new Flashcard"}
-        </div>
+        <h3 onClick={this.toggleForm}>
+          {showForm ? "hide" : "New Flashcard"}
+        </h3>
         {showForm ? <VirusForm addVirus={this.addVirus} /> : null}
         {/* bunch of flash cards */}
         <VirusCards
