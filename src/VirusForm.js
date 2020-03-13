@@ -8,8 +8,9 @@ export default class VirusForm extends Component {
     showBack: false
   };
   handleSubmit = e => {
+    // edit logic
     e.preventDefault();
-    this.props.addCard(this.state);
+    this.props.addVirus(this.state);
     this.setState({
       name: "",
       description: "",

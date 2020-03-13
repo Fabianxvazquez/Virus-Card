@@ -22,7 +22,7 @@ const FlashCard = ({
       </Card.Content>
       <Card.Content extra>
         <Button color="purple" onClick={() => toggleAnswer(id)}>
-          {showBack ? "Show Question" : "Show Answer"}
+          {showBack ? "Show Less" : "Show More"}
         </Button>
         {/* {console.log(toggleAnswer)} */}
         {/* {console.log(id)} */}
