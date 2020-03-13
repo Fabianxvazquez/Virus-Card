@@ -23,7 +23,7 @@ export default class Virus extends React.Component {
       }],
     showForm: false,
     editing: false,
-    currentVirus: 0
+    currentVirus: {}
   };
 
   getID() {
@@ -65,17 +65,21 @@ export default class Virus extends React.Component {
     this.setState({ viruses: viruses });
   };
   toggleEdit = (vID) => {
-    const virus = this.state.viruses.find(e => e.id === vID)
-    // console.log(vID)
-    this.currentVirus = virus;
-
-    console.log(virus);
+    const {viruses} =this.state
+    const virus = viruses.filter(virus => {
+      return virus.id === vID;
+    });
+    const v = {...virus}
+    const v2 = v[0]
+   
     this.setState({ 
+      currentVirus: v2,
       editing: !this.state.editing,
       name: virus.name,
       description: virus.description
     });
     ;
+    console.log(v2);
   }
 
   toggleAnswer = id => {
@@ -109,7 +113,7 @@ export default class Virus extends React.Component {
         <div onClick={this.toggleForm}>{showForm ? "hide" : "add virus"}</div>
         {showForm ? (
           <VirusForm
-            virus={this.currentVirus}
+            currentVirus={this.currentVirus}
             addVirus={this.addVirus}
             toggleForm={this.toggleForm}
             reset={this.resetFormInputs}
@@ -118,7 +122,7 @@ export default class Virus extends React.Component {
         {editing ? (
           <VirusForm
             editing={true}
-            virus={this.currentVirus}
+            currentVirus={this.state.currentVirus}
             edit={this.editVirus}
             toggleForm={this.toggleForm}
             reset={this.resetFormInputs}
