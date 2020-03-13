@@ -10,7 +10,8 @@ const VirusCards = props => (
         toggleEdit={props.toggleEdit}
         key={`virus-id ${virus.id}`}
         toggleAnswer={props.toggleAnswer}
-        renderEditForm={props.renderEditForm}
+        currentVirus={props.currentVirus}
+        edit={props.edit}
         {...virus}
       />
     ))}

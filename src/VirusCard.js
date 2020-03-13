@@ -1,18 +1,14 @@
 import React from "react";
 import { Button, Card, Icon, Image } from "semantic-ui-react";
 
-const FlashCard = ({
+const VirusCard = ({
   deleteVirus,
   name,
   description,
   id,
   toggleEdit,
   showBack,
-  wrong,
-  correct,
   toggleAnswer,
-  edit,
-  renderEditForm
 }) => (
   <>
     <Card>
@@ -32,10 +28,9 @@ const FlashCard = ({
         <Button color="blue" onClick={() => toggleEdit(id)}>
           edit
         </Button>
-        {edit ? renderEditForm() : null}
       </Card.Content>
     </Card>
   </>
 );
 
-export default FlashCard;
+export default VirusCard;

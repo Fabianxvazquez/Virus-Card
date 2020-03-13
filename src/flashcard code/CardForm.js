@@ -1,55 +1,56 @@
-import React from 'react';
-import '../Styles/CardForm.scss';
+import React from "react";
+import { Form } from "semantic-ui-react"
 
-class CardForm extends React.Component {
-
-    // Handle Form Submit
-    handleSubmit = (e) => {
-        let { edit, editing, toggleEdit, reset, newCard, toggleMenu, cards, currentCard, front, back } = this.props
-        e.preventDefault();
-        if (editing) {
-            edit({ id: cards[currentCard].id, front, back });
-            toggleEdit();
-        } else {
-            newCard(front, back);
-            toggleMenu();
-            reset();
-        }
-    };
-
-    render() {
-        let { front, back, handleChange } = this.props;
-        return (
-            <form
-                className="card-form"
-                onSubmit={this.handleSubmit}
-            >
-                <textarea
-                    placeholder="Question:"
-                    autoFocus
-                    name="front"
-                    value={front}
-                    className="input"
-                    required
-                    onChange={handleChange}
-                />
-                <textarea
-                    placeholder="Answer:"
-                    name="back"
-                    value={back}
-                    onChange={handleChange}
-                    className="input"
-                    required
-                />
-                <input
-                    type="submit"
-                    value="Submit"
-                    className="submit"
-                />
-            </form>
-        )
+export default class CardForm extends React.Component {
+  state = {
+    front: "",
+    back: "",
+    correct: 0,
+    wrong: 0,
+    showBack: false
+  };
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.addCard(this.state)
+    this.setState({
+      front: "",
+      back: "",
+      correct: 0,
+      wrong: 0,
+      showBack: false
+    });
+  };
+  handleChange = e => {
+    this.setState({
+      [e.target.name] : e.target.value,
+    })
+  };
+  render() {
+    return (
+      <Form onSubmit={this.handleSubmit}
+      >
+        <Form.Group>
+          <Form.Input
+          required
+          label="front"
+          name="front"
+          placeholder="card question"
+          value={this.state.front}
+          onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Input
+          required
+          label="back"
+          name="back"
+          placeholder="card answer"
+          value={this.state.back}
+          onChange={this.handleChange}
+          />
+        </Form.Group>
+        <Form.Button>Submit</Form.Button>
+      </Form>
+      );
     }
-}
-
-
-export default CardForm;
+  }

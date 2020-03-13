@@ -8,18 +8,23 @@ export default class VirusForm extends Component {
     showBack: false
   };
   handleSubmit = e => {
-    let { edit, editing, toggleEdit, reset, newVirus, toggleMenu, virus, name, description } = this.props
+    let { edit, editing, toggleEdit, reset, addVirus, toggleForm, virus} = this.props
     e.preventDefault();
-    if (editing){
-      edit({ id: virus.id, name, description})
+    if (editing === true){
       toggleEdit();
+      edit(this.state);
+      this.setState({
+        id: virus.id, name: virus.name, description: virus.description
+      })
+      
+      toggleForm()
+      reset()
     } else {
-      newVirus(name, description)
-      toggleMenu();
-      reset();
+      addVirus(this.state)
+      reset()
+      }
     }
-    ;
-  };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
