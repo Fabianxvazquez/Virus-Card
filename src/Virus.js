@@ -3,6 +3,8 @@ import { Container, Header } from "semantic-ui-react";
 import VirusForm from "./VirusForm";
 import VirusCards from "./VirusCards";
 
+
+
 export default class Virus extends React.Component {
   
   state = {
