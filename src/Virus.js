@@ -88,7 +88,7 @@ export default class Virus extends React.Component {
   const { showForm } = this.state;
   return (
     <>
-      <div>Virus</div>
+      
       <Container>
         <Header as="h1">Viruses</Header>
 

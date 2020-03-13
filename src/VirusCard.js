@@ -21,13 +21,13 @@ const FlashCard = ({
         {showBack ? <Card.Header>{description}</Card.Header> : null}
       </Card.Content>
       <Card.Content extra>
-        <Button color="purple" onClick={() => toggleAnswer(id)}>
+        <Button color="blue" onClick={() => toggleAnswer(id)}>
           {showBack ? "Show Less" : "Show More"}
         </Button>
       </Card.Content>
       <Card.Content extra>
         <Button color="red" onClick={() => deleteVirus(id)}>
-          delete
+          Delete Virus
         </Button>
         <Button color="blue" onClick={() => toggleEdit()}>
           edit
