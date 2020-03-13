@@ -7,13 +7,10 @@ import NoMatch from './NoMatch';
 import {Container, Header} from 'semantic-ui-react'
 import Navbar from './Navbar'
 import Virus from './Virus'
-import VirusForm from './VirusForm'
-import VirusCards from './VirusCards'
 
 export default class App extends Component {
   state = {}
   render () {
-  const { showForm } = this.state;
   return (
     <>
       <Container>
