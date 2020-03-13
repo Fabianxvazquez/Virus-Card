@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Card, Icon, Image } from "semantic-ui-react";
 
 const FlashCard = ({
-  deleteCard,
+  deleteVirus,
   name,
   description,
   id,
@@ -32,7 +32,7 @@ const FlashCard = ({
         <Button color="red">Incorrect</Button>
       </Card.Content> */}
       <Card.Content extra>
-        <Button color="red" onClick={() => deleteCard(id)}>
+        <Button color="red" onClick={() => deleteVirus(id)}>
           delete
         </Button>
         {/* <Button color="blue" onClick={() => toggleEdit(id)}>
