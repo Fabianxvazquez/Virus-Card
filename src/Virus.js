@@ -10,14 +10,14 @@ export default class Virus extends React.Component {
   state = {
     viruses: [
       {
-        id: 1,
+        id: this.getID(),
         name: "ebola",
         description: "The Ebola virus causes an acute, serious illness which is often fatal if untreated. EVD first appeared in 1976 in 2 simultaneous outbreaks, one in what is now Nzara, South Sudan, and the other in Yambuku, DRC. The latter occurred in a village near the Ebola River, from which the disease takes its name. The 2014–2016 outbreak in West Africa was the largest Ebola outbreak since the virus was first discovered in 1976. The outbreak started in Guinea and then moved across land borders to Sierra Leone and Liberia. The current 2018-2019 outbreak in eastern DRC is highly complex, with insecurity adversely affecting public health response activities. The virus family Filoviridae includes three genera: Cuevavirus, Marburgvirus, and Ebolavirus. Within the genus Ebolavirus, six species have been identified: Zaire, Bundibugyo, Sudan, Taï Forest, Reston and Bombali. The virus causing the current outbreak in DRC and the 2014–2016 West African outbreak belongs to the Zaire ebolavirus species.",
         showBack: false,
         edit: false
       },
       {
-        id: 2,
+        id: this.getID(),
         name: "Covid-19",
         description: "Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death. ",
         showBack: false,
@@ -45,6 +45,12 @@ export default class Virus extends React.Component {
       viruses: newViruses
     });
   };
+  resetFormInputs = () => {
+    this.setState({
+      name: "",
+      description: ""
+    })
+  }
 
 
   editVirus = v => {
@@ -54,13 +60,17 @@ export default class Virus extends React.Component {
     });
     this.setState({ viruses: viruses });
   };
-  toggleEdit = (is) => {
-    let {viruses} = this.state
+  toggleEdit = (vID) => {
+    this.toggleForm()
+
+    const virus = this.state.viruses.find(e => e.id === vID)
+    console.log(vID)
+    console.log(virus)
     this.resetFormInputs();
     this.setState({ 
       editing: !this.state.editing,
-      name: viruses[is].name,
-      description: viruses[is].description
+      name: virus.name,
+      description: virus.description
     });
   }
 
@@ -101,6 +111,8 @@ export default class Virus extends React.Component {
         <VirusCards
           viruses={this.state.viruses}
           delete={this.deleteVirus}
+          edit={this.editVirus}
+          reset={this.resetFormInputs}
           toggleEdit={this.toggleEdit}
           toggleAnswer={this.toggleAnswer}
           renderEditForm={this.renderEditForm}

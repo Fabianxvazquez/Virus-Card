@@ -29,7 +29,7 @@ const FlashCard = ({
         <Button color="red" onClick={() => deleteVirus(id)}>
           Delete Virus
         </Button>
-        <Button color="blue" onClick={() => toggleEdit()}>
+        <Button color="blue" onClick={() => toggleEdit(id)}>
           edit
         </Button>
         {edit ? renderEditForm() : null}
