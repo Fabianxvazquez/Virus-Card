@@ -23,7 +23,8 @@ export default class Virus extends React.Component {
         showBack: false,
         edit: false
       }],
-    showForm: false
+    showForm: false,
+    editing: false
   };
 
   getID() {
@@ -45,45 +46,23 @@ export default class Virus extends React.Component {
     });
   };
 
-  editVirus = virusObject => {
-    const { viruses } = this.state;
-    const newViruses = viruses.map(virus => {
-      if (virus.id === viruses.id) return virus;
+
+  editVirus = v => {
+    const viruses = this.state.viruses.map(virus => {
+      if (virus.id === v.id) return virus;
       return virus;
     });
-    this.setState({ viruses: newViruses });
+    this.setState({ viruses: viruses });
   };
-  renderEditForm() {
-    if (this.state.edit) {
-      return (
-      <form onSubmit={this.onUpdateHandle.bind(this)}>
-        <input 
-        type="text" 
-        name="updatedItem" 
-        className="item" 
-        defaultValue={this.state.title} />
-        <button className="update-add-item">Update</button>
-      </form>
-      )}
-    }
-  toggleEdit = id => {
-    const newArray = this.state.viruses.map(virus => {
-      if (virus.id === id) {
-        const newCard = { ...virus };
-        newCard.edit = !virus.Edit;
-        this.toggleForm()
-
-        
-      } else {
-        return virus
-      }
+  toggleEdit = (is) => {
+    let {viruses} = this.state
+    this.resetFormInputs();
+    this.setState({ 
+      editing: !this.state.editing,
+      name: viruses[is].name,
+      description: viruses[is].description
     });
-    
-    this.setState({
-      viruses: newArray
-    })
-    
-  };
+  }
 
   toggleAnswer = id => {
     // map and if id matches change
@@ -115,7 +94,7 @@ export default class Virus extends React.Component {
 
         {/* a way to add more flash cards */}
         <div onClick={this.toggleForm}>
-          {showForm ? "hide" : "new Flashcard"}
+          {showForm ? "hide" : "add virus"}
         </div>
         {showForm ? <VirusForm addVirus={this.addVirus} /> : null}
         {/* bunch of flash cards */}
@@ -124,6 +103,7 @@ export default class Virus extends React.Component {
           delete={this.deleteVirus}
           toggleEdit={this.toggleEdit}
           toggleAnswer={this.toggleAnswer}
+          renderEditForm={this.renderEditForm}
         />
       </Container>
     </>
