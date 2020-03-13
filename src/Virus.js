@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 export default class Virus extends React.Component {
   componentDidMount() {
     console.log("mounted");
