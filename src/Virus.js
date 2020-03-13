@@ -4,6 +4,7 @@ import VirusForm from "./VirusForm";
 import VirusCards from "./VirusCards";
 
 export default class Virus extends React.Component {
+  
   state = {
     viruses: [
       {
@@ -19,19 +20,21 @@ export default class Virus extends React.Component {
         description: "Common signs of infection include respiratory symptoms, fever, cough, shortness of breath and breathing difficulties. In more severe cases, infection can cause pneumonia, severe acute respiratory syndrome, kidney failure and even death. ",
         showBack: false,
         edit: false
-      }
-    ], showForm: false
+      }],
+    showForm: false
   };
+
   getID() {
     return Math.floor(Math.random() * 100);
   }
+  
   addVirus = virus => {
     const newVirus = { ...virus, id: this.getID() };
     const newViruses = [newVirus, ...this.state.viruses];
     this.setState({
       viruses: newViruses
     });
-  };
+  }; 
   deleteVirus = id => {
     const { viruses } = this.state;
     const newViruses = viruses.filter(virus => virus.id !== id);
@@ -104,20 +107,19 @@ export default class Virus extends React.Component {
   const { showForm } = this.state;
   return (
     <>
-    <div>Virus</div>
+      <div>Virus</div>
       <Container>
-        <Header as="h1">Flash Cards</Header>
+        <Header as="h1">Viruses</Header>
 
         {/* a way to add more flash cards */}
         <div onClick={this.toggleForm}>
           {showForm ? "hide" : "new Flashcard"}
         </div>
-        {showForm ? <VirusForm addCard={this.addVirus} /> : null}
+        {showForm ? <VirusForm addVirus={this.addVirus} /> : null}
         {/* bunch of flash cards */}
         <VirusCards
           viruses={this.state.viruses}
           delete={this.deleteVirus}
-          // edit={this.editCard}
           toggleEdit={this.toggleEdit}
           toggleAnswer={this.toggleAnswer}
         />
